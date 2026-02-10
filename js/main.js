@@ -489,10 +489,30 @@ function initKitJourneyScroller() {
         const gridCenter = grid.offsetWidth / 2;
         const scrollTarget = cardCenter - gridCenter;
 
-        grid.scrollTo({
-            left: scrollTarget,
-            behavior: 'smooth',
-        });
+        // Custom eased scroll for consistent speed (300ms, same for all cards)
+        const start = grid.scrollLeft;
+        const distance = scrollTarget - start;
+        const duration = 300;
+        let startTime = null;
+
+        function easeOutCubic(t) {
+            return 1 - Math.pow(1 - t, 3);
+        }
+
+        function animate(currentTime) {
+            if (!startTime) startTime = currentTime;
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = easeOutCubic(progress);
+            
+            grid.scrollLeft = start + distance * eased;
+            
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            }
+        }
+
+        requestAnimationFrame(animate);
     }
 
     // Dot click handlers
