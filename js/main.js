@@ -405,6 +405,10 @@ function initKitJourneyScroller() {
         'Peek & Find',
         'Stack & Sort',
         'Push & Play',
+        'Explore & Express',
+        'Sort & Stack',
+        'Build & Create',
+        'Imagine & Play',
     ];
 
     /**
