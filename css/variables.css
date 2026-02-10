@@ -178,6 +178,10 @@
     --stagger-4: 300ms;
     --stagger-5: 400ms;
     --stagger-6: 500ms;
+    --stagger-7: 600ms;
+    --stagger-8: 700ms;
+    --stagger-9: 800ms;
+    --stagger-10: 900ms;
 
     /* ========================================
        EFFECTS & TEXTURES

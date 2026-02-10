@@ -3862,6 +3862,31 @@ a.community-card-link {
     transform: translateY(0);
 }
 
+.reveal-stagger.visible > *:nth-child(7) {
+    transition-delay: var(--stagger-7);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-stagger.visible > *:nth-child(8) {
+    transition-delay: var(--stagger-8);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-stagger.visible > *:nth-child(9) {
+    transition-delay: var(--stagger-9);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-stagger.visible > *:nth-child(10) {
+    transition-delay: var(--stagger-10);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 /* ============================================
    PLACEHOLDER IMAGES
    ============================================ */
