@@ -156,7 +156,7 @@ function initKitCarousels() {
         // Click on image to open lightbox
         images.forEach(img => {
             img.addEventListener('click', () => {
-                const imageSrcs = Array.from(images).map(i => i.src);
+                const imageSrcs = Array.from(images).map(i => i.src || i.dataset.src);
                 const imageAlts = Array.from(images).map(i => i.alt);
                 openKitLightbox(imageSrcs, imageAlts, currentIndex);
             });
@@ -977,3 +977,55 @@ function initLazyLoading() {
 
 // Initialize success modal when DOM is ready
 document.addEventListener('DOMContentLoaded', initSuccessModal);
+
+// ── Voices marquee: drag-to-scroll ──
+(function () {
+    const container = document.querySelector('.voices-container');
+    if (!container) return;
+    const track = container.querySelector('.voices-track');
+    let isDragging = false;
+    let startX, scrollLeft;
+
+    function pause() { track.style.animationPlayState = 'paused'; }
+    function resume() {
+        if (!isDragging) track.style.animationPlayState = '';
+    }
+
+    container.addEventListener('mousedown', function (e) {
+        isDragging = true;
+        container.classList.add('is-dragging');
+        startX = e.pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+        pause();
+    });
+
+    document.addEventListener('mousemove', function (e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        var x = e.pageX - container.offsetLeft;
+        container.scrollLeft = scrollLeft - (x - startX);
+    });
+
+    document.addEventListener('mouseup', function () {
+        if (!isDragging) return;
+        isDragging = false;
+        container.classList.remove('is-dragging');
+        resume();
+    });
+
+    // Touch support
+    container.addEventListener('touchstart', function (e) {
+        startX = e.touches[0].pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+        pause();
+    }, { passive: true });
+
+    container.addEventListener('touchmove', function (e) {
+        var x = e.touches[0].pageX - container.offsetLeft;
+        container.scrollLeft = scrollLeft - (x - startX);
+    }, { passive: true });
+
+    container.addEventListener('touchend', function () {
+        resume();
+    });
+})();
