@@ -2371,7 +2371,7 @@ a.community-card-link {
 }
 
 .split-image {
-    background: var(--color-bg-mist);
+    background: linear-gradient(135deg, var(--color-bg-mist) 0%, var(--color-bg-clay) 100%);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -2382,7 +2382,8 @@ a.community-card-link {
 .split-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    padding: var(--space-xl);
 }
 
 .split-content {
@@ -3244,8 +3245,10 @@ a.community-card-link {
 /* Scrolling voices container */
 .voices-container {
     width: 100%;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     padding: var(--space-xl) 0;
+    cursor: grab;
     /* Fade edges */
     mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
     -webkit-mask-image: linear-gradient(
@@ -3255,6 +3258,18 @@ a.community-card-link {
         black 95%,
         transparent 100%
     );
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.voices-container::-webkit-scrollbar {
+    display: none;
+}
+
+.voices-container.is-dragging {
+    cursor: grabbing;
+    user-select: none;
 }
 
 .voices-track {
@@ -3862,6 +3877,31 @@ a.community-card-link {
     transform: translateY(0);
 }
 
+.reveal-stagger.visible > *:nth-child(7) {
+    transition-delay: var(--stagger-7);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-stagger.visible > *:nth-child(8) {
+    transition-delay: var(--stagger-8);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-stagger.visible > *:nth-child(9) {
+    transition-delay: var(--stagger-9);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-stagger.visible > *:nth-child(10) {
+    transition-delay: var(--stagger-10);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 /* ============================================
    PLACEHOLDER IMAGES
    ============================================ */
@@ -4443,7 +4483,7 @@ a.community-card-link {
 
     .split-image,
     .pattern-image {
-        min-height: 350px;
+        min-height: 280px;
     }
 
     .pattern-section.reverse .pattern-image {
@@ -5207,6 +5247,66 @@ img.lazy-loaded {
     color: var(--color-accent-dark);
 }
 
+.product-card__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-top: auto;
+}
+
+.product-card__actions .product-card__cta {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.product-card__cta--shopee {
+    color: white !important;
+    font-weight: 700;
+    padding: var(--space-sm) var(--space-lg);
+    background: #EE4D2D;
+    border: none;
+    border-radius: var(--radius-pill);
+    justify-content: center;
+    transition: all var(--duration-fast) var(--ease-out);
+    box-shadow: 0 4px 12px rgba(238, 77, 45, 0.3);
+}
+
+.product-card__cta--shopee:hover {
+    background: #D4411F;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(238, 77, 45, 0.4);
+}
+
+.product-card__cta--shopee .shopee-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.shopee-kits-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+    padding: var(--space-md) var(--space-2xl);
+    background: #EE4D2D;
+    color: white;
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 16px rgba(238, 77, 45, 0.35);
+    transition: all var(--duration-fast) var(--ease-out);
+}
+
+.shopee-kits-cta:hover {
+    background: #D4411F;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(238, 77, 45, 0.45);
+}
+
 .product-card--lumibox:hover {
     border-color: var(--color-accent);
     box-shadow: var(--shadow-lg), 0 8px 32px var(--color-accent-glow);
@@ -5318,6 +5418,7 @@ img.lazy-loaded {
 
 .testimonials-section {
     padding: var(--spacing-section) 0;
+    margin-top: var(--space-4xl);
     background: linear-gradient(180deg, var(--color-bg-warm) 0%, var(--color-bg-light) 100%);
 }
 
@@ -5325,6 +5426,7 @@ img.lazy-loaded {
     text-align: center;
     max-width: 700px;
     margin: 0 auto var(--space-2xl);
+    padding-top: var(--space-xl);
 }
 
 .testimonials-label {
@@ -5494,14 +5596,21 @@ img.lazy-loaded {
 
 /* Spark Section Illustration */
 .split-section .section-illustration {
-    max-width: 500px;
+    max-width: 85%;
+    max-height: 80%;
     margin: 0 auto;
+    border-radius: 0;
+    filter: drop-shadow(0 8px 32px rgba(0,0,0,0.08));
 }
 
 /* About/Solution Section Illustration */
 .solution-visual .section-illustration {
-    max-width: 400px;
-    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    margin: 0;
+    border-radius: 0;
+    object-fit: cover;
 }
 
 @media (max-width: 768px) {
@@ -5509,8 +5618,16 @@ img.lazy-loaded {
         max-width: 100%;
     }
     
-    .split-section .section-illustration,
+    .split-section .section-illustration {
+        max-width: 90%;
+    }
+
     .solution-visual .section-illustration {
-        max-width: 300px;
+        max-width: 100%;
+        height: 100%;
+    }
+
+    .split-image img {
+        padding: var(--space-md);
     }
 }

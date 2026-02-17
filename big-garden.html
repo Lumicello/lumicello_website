@@ -1550,10 +1550,91 @@
             stroke: currentColor;
         }
 
+        .garden-cta-btn[type="submit"] {
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .garden-waitlist-form {
+            margin-top: var(--space-xl);
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .garden-form-row {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .garden-form-field input {
+            padding: var(--space-md) var(--space-lg);
+            border: 2px solid var(--color-sage-light);
+            border-radius: var(--radius-pill);
+            background: white;
+            color: var(--color-text);
+            font-size: var(--text-body);
+            font-family: inherit;
+            min-width: 200px;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .garden-form-field input::placeholder {
+            color: var(--color-sage-light);
+        }
+
+        .garden-form-field input:focus {
+            outline: none;
+            border-color: var(--color-sage);
+            box-shadow: 0 0 0 3px rgba(122, 158, 126, 0.15);
+        }
+
+        .garden-waitlist-success {
+            text-align: center;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .garden-waitlist-success .success-icon {
+            font-size: 3.5rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .garden-waitlist-success h3 {
+            font-family: var(--font-heading);
+            font-size: var(--text-h3);
+            color: var(--color-sage-dark);
+            margin-bottom: var(--space-sm);
+        }
+
+        .garden-waitlist-success p {
+            font-size: var(--text-body-lg);
+            color: var(--color-text-muted);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* ============================================
            RESPONSIVE
            ============================================ */
         @media (max-width: 900px) {
+            .garden-form-row {
+                flex-direction: column;
+            }
+
+            .garden-form-field input,
+            .garden-waitlist-form .garden-cta-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
             .garden-hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -1687,6 +1768,38 @@
         </div>
     </section>
 
+    <!-- WAITLIST SECTION - Right after hero -->
+    <section class="garden-cta-section" id="waitlist">
+        <div class="garden-cta-container" data-animate>
+            <h2>Be the First to Grow</h2>
+            <p>
+                Big Garden is launching soon. Join the waitlist and be among the first families
+                to watch their child's skills bloom.
+            </p>
+            <form action="https://app.kit.com/forms/9097921/subscriptions" method="post" class="garden-waitlist-form" id="garden-waitlist-form">
+                <div class="garden-form-row">
+                    <div class="garden-form-field">
+                        <input type="text" name="fields[first_name]" placeholder="Your name" required>
+                    </div>
+                    <div class="garden-form-field">
+                        <input type="email" name="email_address" placeholder="Your email" required>
+                    </div>
+                    <button type="submit" class="garden-cta-btn">
+                        Join Waitlist
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+            <div class="garden-waitlist-success" id="garden-waitlist-success" style="display:none;">
+                <div class="success-icon">🌱</div>
+                <h3>You're on the list!</h3>
+                <p>We'll let you know as soon as Big Garden is ready. Your child's garden is about to bloom.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- JOURNEY SECTION - Emotional Before/After -->
     <section class="journey-section" id="transformation">
         <div class="journey-container">
@@ -1784,7 +1897,7 @@
 
             <div class="quotable-cards" data-animate="delay-1">
                 <!-- Quote 1 - Sage -->
-                <div class="quotable-card sage" data-quote="Every child blooms in their own time. Your job isn't to rush the garden—it's to tend it with love.">
+                <div class="quotable-card sage" data-quote="Every child blooms in their own time. Your job isn't to rush the garden. It's to tend it with love.">
                     <div class="quotable-icon">
                         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M24 40V24"/>
@@ -1793,8 +1906,8 @@
                             <ellipse cx="32" cy="28" rx="6" ry="4" transform="rotate(30 32 28)"/>
                         </svg>
                     </div>
-                    <p class="quotable-text">"Every child blooms in their own time. Your job isn't to rush the garden—it's to tend it with love."</p>
-                    <p class="quotable-attribution">— Big Garden</p>
+                    <p class="quotable-text">"Every child blooms in their own time. Your job isn't to rush the garden. It's to tend it with love."</p>
+                    <p class="quotable-attribution">– Big Garden</p>
                     <div class="share-buttons">
                         <button type="button" class="share-btn facebook" aria-label="Share on Facebook" data-platform="facebook">
                             <i class="fa-brands fa-facebook-f"></i>
@@ -1826,7 +1939,7 @@
                         </svg>
                     </div>
                     <p class="quotable-text">"The tiniest sprout holds the promise of the mightiest oak. Celebrate the small wins."</p>
-                    <p class="quotable-attribution">— Big Garden</p>
+                    <p class="quotable-attribution">– Big Garden</p>
                     <div class="share-buttons">
                         <button type="button" class="share-btn facebook" aria-label="Share on Facebook" data-platform="facebook">
                             <i class="fa-brands fa-facebook-f"></i>
@@ -1862,7 +1975,7 @@
                         </svg>
                     </div>
                     <p class="quotable-text">"You can't force a flower to bloom, but you can give it sunshine. Be your child's sunshine."</p>
-                    <p class="quotable-attribution">— Big Garden</p>
+                    <p class="quotable-attribution">– Big Garden</p>
                     <div class="share-buttons">
                         <button type="button" class="share-btn facebook" aria-label="Share on Facebook" data-platform="facebook">
                             <i class="fa-brands fa-facebook-f"></i>
@@ -1883,7 +1996,7 @@
                 </div>
 
                 <!-- Quote 4 - Lavender -->
-                <div class="quotable-card lavender" data-quote="In a world of comparison, be the parent who sees their child's unique garden—not someone else's.">
+                <div class="quotable-card lavender" data-quote="In a world of comparison, be the parent who sees their child's unique garden, not someone else's.">
                     <div class="quotable-icon">
                         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M16 44V28"/>
@@ -1894,8 +2007,8 @@
                             <ellipse cx="24" cy="10" rx="8" ry="6"/>
                         </svg>
                     </div>
-                    <p class="quotable-text">"In a world of comparison, be the parent who sees their child's unique garden—not someone else's."</p>
-                    <p class="quotable-attribution">— Big Garden</p>
+                    <p class="quotable-text">"In a world of comparison, be the parent who sees their child's unique garden, not someone else's."</p>
+                    <p class="quotable-attribution">– Big Garden</p>
                     <div class="share-buttons">
                         <button type="button" class="share-btn facebook" aria-label="Share on Facebook" data-platform="facebook">
                             <i class="fa-brands fa-facebook-f"></i>
@@ -2206,28 +2319,11 @@
         </div>
     </section>
 
-    <!-- CTA SECTION -->
-    <section class="garden-cta-section">
-        <div class="garden-cta-container" data-animate>
-            <h2>Start Your Garden Today</h2>
-            <p>
-                Join thousands of families who've transformed milestone tracking
-                into a joyful journey of discovery.
-            </p>
-            <a href="/contact.html" class="garden-cta-btn">
-                Get Started
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
-        </div>
-    </section>
-
     <!-- FOOTER (shared component) -->
     <div id="footer-placeholder"></div>
 
     <!-- Scripts -->
-    <script src="js/components.js"></script>
+    <script src="js/components.js?v=20260217d"></script>
     <script src="js/main.js"></script>
 
     <!-- Page Scripts -->
@@ -2300,7 +2396,7 @@
                 e.preventDefault();
                 const card = btn.closest('.quotable-card');
                 const quote = card ? card.dataset.quote : '';
-                const encodedQuote = encodeURIComponent(quote + ' — Big Garden');
+                const encodedQuote = encodeURIComponent(quote + ' – Big Garden');
                 const platform = btn.dataset.platform;
 
                 let shareUrl = '';
@@ -2316,11 +2412,11 @@
                         if (navigator.share) {
                             navigator.share({
                                 title: 'Big Garden',
-                                text: quote + ' — Big Garden',
+                                text: quote + ' – Big Garden',
                                 url: window.location.href
                             });
                         } else {
-                            navigator.clipboard.writeText(quote + ' — Big Garden\n' + window.location.href).then(() => {
+                            navigator.clipboard.writeText(quote + ' – Big Garden\n' + window.location.href).then(() => {
                                 alert('Quote copied! Open Instagram and paste in your story or post.');
                             });
                         }
@@ -2329,7 +2425,7 @@
                         shareUrl = `https://social-plugins.line.me/lineit/share?url=${pageUrl}&text=${encodedQuote}`;
                         break;
                     case 'copy':
-                        navigator.clipboard.writeText(quote + ' — Big Garden\n' + window.location.href).then(() => {
+                        navigator.clipboard.writeText(quote + ' – Big Garden\n' + window.location.href).then(() => {
                             btn.classList.add('copied');
                             setTimeout(() => btn.classList.remove('copied'), 2000);
                         });
@@ -2439,6 +2535,82 @@
             }, { threshold: 0.3 });
 
             sceneObserver.observe(gardenScene);
+        }
+    </script>
+    <script>
+        // Waitlist form – submit to Kit via fetch, show inline success
+        const waitlistForm = document.getElementById('garden-waitlist-form');
+        const waitlistSuccess = document.getElementById('garden-waitlist-success');
+
+        if (waitlistForm) {
+            let lastSubmit = 0;
+            waitlistForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                // Rate limit – 1 submission per 10 seconds
+                const now = Date.now();
+                if (now - lastSubmit < 10000) {
+                    alert('Please wait a moment before trying again.');
+                    return;
+                }
+                lastSubmit = now;
+                const email = waitlistForm.querySelector('input[type="email"]').value.trim();
+                const name = waitlistForm.querySelector('input[name="fields[first_name]"]').value.trim();
+
+                // Client-side validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+                if (name.length < 1 || name.length > 100) {
+                    alert('Please enter your name.');
+                    return;
+                }
+                // Sanitize inputs
+                const sanitize = (str) => {
+                    return str
+                        .replace(/<[^>]*>/g, '')        // Strip HTML tags
+                        .replace(/[<>"'`]/g, '')         // Remove chars used in XSS/injection
+                        .replace(/javascript:/gi, '')    // Block JS protocol
+                        .replace(/on\w+\s*=/gi, '')      // Block event handlers (onclick= etc)
+                        .replace(/\{\{.*?\}\}/g, '')     // Block template injection
+                        .trim();
+                };
+
+                const cleanName = sanitize(name);
+                const cleanEmail = email.toLowerCase().trim();
+
+                // Block obviously malicious patterns
+                const dangerousPatterns = /(<script|javascript:|data:|vbscript:|on\w+=|union\s+select|drop\s+table|insert\s+into|eval\(|alert\()/i;
+                if (dangerousPatterns.test(name + email)) {
+                    alert('Invalid input detected.');
+                    return;
+                }
+
+                waitlistForm.querySelector('input[type="email"]').value = cleanEmail;
+                waitlistForm.querySelector('input[name="fields[first_name]"]').value = cleanName;
+
+                const formData = new FormData(waitlistForm);
+                const btn = waitlistForm.querySelector('button[type="submit"]');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = 'Joining...';
+                btn.disabled = true;
+
+                try {
+                    await fetch(waitlistForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        mode: 'no-cors'
+                    });
+                    waitlistForm.style.display = 'none';
+                    waitlistSuccess.style.display = 'block';
+                } catch (err) {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    alert('Something went wrong. Please try again.');
+                }
+            });
         }
     </script>
 </body>

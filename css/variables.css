@@ -173,11 +173,15 @@
 
     /* Stagger delays for orchestrated animations */
     --stagger-1: 0ms;
-    --stagger-2: 100ms;
-    --stagger-3: 200ms;
-    --stagger-4: 300ms;
-    --stagger-5: 400ms;
-    --stagger-6: 500ms;
+    --stagger-2: 50ms;
+    --stagger-3: 100ms;
+    --stagger-4: 150ms;
+    --stagger-5: 200ms;
+    --stagger-6: 250ms;
+    --stagger-7: 300ms;
+    --stagger-8: 350ms;
+    --stagger-9: 400ms;
+    --stagger-10: 450ms;
 
     /* ========================================
        EFFECTS & TEXTURES
