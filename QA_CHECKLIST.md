@@ -18,7 +18,7 @@
 |---------|-------------------|-------------|
 | Logo | Navigate to homepage | `index.html` |
 | Platform | Scroll to Bento Grid section | `#platform` |
-| Curiosity Fingerprint | Scroll to Fingerprint section | `#fingerprint` |
+| Curio Types | Scroll to Curio Types section | `#curio-types` |
 | LumiBox | Scroll to Kits section | `#kits` |
 | About | Scroll to About section | `#about` |
 | Join Community (button) | Scroll to Community section | `#community` |
@@ -42,7 +42,7 @@
 | Element | Expected Behavior | Link/Action |
 |---------|-------------------|-------------|
 | Logo | Navigate to homepage | `index.html` |
-| Product links | Scroll to respective sections | `#platform`, `#fingerprint`, `#kits` |
+| Product links | Scroll to respective sections | `#platform`, `#curio-types`, `#kits` |
 | For Educators | Coming Soon page | `coming-soon.html` |
 | Company links | Various | See footer section below |
 | Support links | Various | See footer section below |
@@ -95,7 +95,7 @@ These components are injected into subpages via JavaScript.
 |---------|-------------------|-------------|
 | Logo | Navigate to homepage | `index.html` |
 | Platform | Navigate to homepage section | `index.html#platform` |
-| Curiosity Fingerprint | Navigate to homepage section | `index.html#fingerprint` |
+| Curio Types | Navigate to homepage section | `index.html#curio-types` |
 | LumiBox | Navigate to homepage section | `index.html#kits` |
 | About | Navigate to homepage section | `index.html#about` |
 | Join Community | Navigate to homepage section | `index.html#community` |
@@ -124,7 +124,7 @@ These components are injected into subpages via JavaScript.
 |---------|-------------------|-------------|
 | Back to Home | Navigate to homepage | `index.html` |
 | Get Help | Navigate to contact page | `contact.html` |
-| Curiosity Fingerprint (suggestion) | Navigate to fingerprint section | `index.html#fingerprint` |
+| Curio Types (suggestion) | Navigate to Curio Types section | `index.html#curio-types` |
 | LumiBox (suggestion) | Navigate to kits section | `index.html#kits` |
 | Join Community (suggestion) | Navigate to community section | `index.html#community` |
 
@@ -136,7 +136,7 @@ Post-newsletter signup confirmation page with confetti animation.
 | Navigation | Shared component | See Section 4 |
 | LINE Card | Open LINE Official | `https://lin.ee/eH1GxA5` _(new tab)_ |
 | Instagram Card | Open Instagram | `https://www.instagram.com/lumicello.th` _(new tab)_ |
-| Curiosity Fingerprint button | Navigate to fingerprint section | `index.html#fingerprint` |
+| Curio Types button | Navigate to Curio Types section | `index.html#curio-types` |
 | LumiBox button | Navigate to kits section | `index.html#kits` |
 | Footer | Shared component | See Section 4 |
 

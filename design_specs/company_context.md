@@ -32,7 +32,7 @@ Parents and educators get insight into each child's unique learning pattern so t
 
 2) Customized
 
-Each child has a Curiosity Fingerprint™ — a multidimensional profile that evolves over time and informs:
+Each child has a Curio Type — a multidimensional profile that evolves over time and informs:
 	•	Recommended activities
 	•	Learning styles
 	•	Interest clusters
@@ -57,7 +57,7 @@ The heart of Lumicello.
 Key features:
 	•	Personalized discovery dashboard
 	•	Adaptive learning recommendations
-	•	Interest graph & progress visualization (Constellation and Fingerprint motif)
+	•	Interest graph & progress visualization (Constellation motif)
 	•	Interactive micro-lessons
 	•	Achievement moments (Soft Mustard highlight)
 
@@ -134,7 +134,7 @@ Typography
 
 Shapes & Patterns
 	•	Constellations: dots connected by soft lines
-	•	Fingerprint Flows: flowing lines representing individual paths
+	•	Curio Paths: flowing lines representing individual learning journeys
 	•	Adaptive Grid: clean cards, rounded corners
 
 Illustration Style
@@ -176,7 +176,7 @@ Value Props
 	•	3 cards: "Research-Backed," "Customized," "Right Pace"
 	•	Icons: Soft, colorful SVG icons
 
-Curiosity Fingerprint™
+Curio Types
 	•	Explain in parent-friendly terms
 	•	Visual: constellation/radar chart with floating animation
 

@@ -59,7 +59,7 @@ For the *LumiBox* section:
 **Key Requirement:** "Variety of movements that go well together."
 1.  **Scroll Reveal:** Elements should fade in and slide up gently as the user scrolls.
     * *Timing:* `transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);`
-2.  **The "Constellation" Effect:** Connective lines between dots (representing the "Curiosity Fingerprint") should gently pulse opacity (0.4 to 1.0) over 4 seconds.
+2.  **The "Constellation" Effect:** Connective lines between dots (representing "Curio Types") should gently pulse opacity (0.4 to 1.0) over 4 seconds.
 3.  **No "Jank":** Avoid distinct/sharp hover states. Everything must fade or morph.
 
 ## 6. AI Image Generation Strategy (No Graphic Designer)
@@ -71,5 +71,5 @@ Since we have no designer, use these exact prompts in Midjourney/DALL-E to gener
 **B. LumiBox (Product Mockup):**
 > *Prompt:* "A wooden educational toy set arranged neatly on a pastel beige surface, shot from directly above (knolling), soft natural lighting, high end product photography, colorful geometric shapes, Montessori style, zero clutter --ar 4:3"
 
-**C. "Curiosity Fingerprint" (Data Viz):**
+**C. "Curio Types" (Data Viz):**
 > *Prompt:* "A beautiful abstract data visualization of a radar chart, glowing lines, connecting dots, soft mustard and forest olive, soft gradient background, minimalist UI design, looking distinct and scientific but friendly --ar 1:1"

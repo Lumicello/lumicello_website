@@ -84,8 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Kit Journey Scroller (mobile)
     initKitJourneyScroller();
 
-    // Cinematic Fingerprint Experience
-    initFingerprintCinema();
+    // Cinematic Curio Types Experience
+    initCurioCinema();
 
     // Lazy Loading for Images
     initLazyLoading();
@@ -585,16 +585,16 @@ function initKitJourneyScroller() {
 }
 
 // ============================================
-// CINEMATIC FINGERPRINT EXPERIENCE
+// CINEMATIC CURIO TYPES EXPERIENCE
 // Auto-playing loop when visible - "The Living Light Show"
 // ============================================
 
 /**
- * Initialize the cinematic fingerprint animation experience.
+ * Initialize the cinematic Curio Types animation experience.
  * Creates an auto-playing, looping animation that activates when visible in viewport.
- * Features 4 acts: SCAN, ANALYZE, MAP, PROFILE.
+ * Features 4 acts: DISCOVER, ANALYZE, MAP, REVEAL.
  */
-function initFingerprintCinema() {
+function initCurioCinema() {
     const fpCinema = document.getElementById('fp-cinema');
     if (!fpCinema) return;
 
@@ -609,10 +609,10 @@ function initFingerprintCinema() {
      * @type {Array<{num: string, name: string, desc: string, duration: number}>}
      */
     const acts = [
-        { num: '01', name: 'SCAN', desc: 'Capturing unique patterns', duration: 2200 },
-        { num: '02', name: 'ANALYZE', desc: 'Discovering interests', duration: 2500 },
-        { num: '03', name: 'MAP', desc: 'Connecting the dots', duration: 2800 },
-        { num: '04', name: 'PROFILE', desc: 'Your curiosity fingerprint', duration: 6000 },
+        { num: '01', name: 'DISCOVER', desc: 'Constellation emerges', duration: 2200 },
+        { num: '02', name: 'EXPLORE', desc: 'Discovering interests', duration: 2500 },
+        { num: '03', name: 'CONNECT', desc: 'Connecting the dots', duration: 2800 },
+        { num: '04', name: 'REVEAL', desc: 'Your Curio Type', duration: 6000 },
     ];
 
     let currentAct = 0;

@@ -297,7 +297,7 @@
 <body>
     <!-- Announcement Bar -->
     <div class="announcement-bar">
-        Discover your child's <span>Curiosity Fingerprint</span> - Join our community today!
+        Discover your child's <span>Curio Types</span> - Join our community today!
     </div>
 
     <!-- Navigation (Shared Component) -->
@@ -365,7 +365,7 @@
     </section>
 
     <!-- Bento Grid Section - Value Props -->
-    <section class="bento-section" id="fingerprint">
+    <section class="bento-section" id="curio-types">
         <div class="bento-container">
             <div class="section-header reveal">
                 <h2>Learning That Adapts to Your Child</h2>
@@ -386,111 +386,117 @@
                     <p>Learning paths that follow your child's natural interests, sparking deeper engagement and joy.</p>
                 </div>
 
-                <!-- Featured Card: Curiosity Fingerprint -->
+                <!-- Featured Card: Curio Types -->
                 <div class="bento-card featured">
                     <div class="bento-content">
                         <div class="bento-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/>
+                                <circle cx="12" cy="12" r="2"/>
+                                <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
                             </svg>
                         </div>
-                        <h3>Curiosity Fingerprint</h3>
+                        <h3>Curio Types</h3>
                         <p>A unique profile that maps your child's interests, learning styles, and engagement patterns - evolving as they grow.</p>
                     </div>
-                    <div class="bento-image fingerprint-cinema" id="fp-cinema">
-                        <!-- Deep blue backdrop with subtle texture -->
+                    <div class="bento-image curio-cinema" id="fp-cinema">
+                        <!-- Deep midnight backdrop -->
                         <div class="fp-backdrop"></div>
 
-                        <!-- Prominent Stage Label - Part of the Design -->
+                        <!-- Stage label -->
                         <div class="fp-stage-header">
                             <div class="fp-stage-indicator">
                                 <span class="fp-stage-step">STEP</span>
                                 <span class="fp-scene-num">01</span>
                             </div>
                             <div class="fp-stage-title">
-                                <span class="fp-scene-name">SCAN</span>
-                                <span class="fp-stage-desc">Capturing unique patterns</span>
+                                <span class="fp-scene-name">DISCOVER</span>
+                                <span class="fp-stage-desc">Curiosity dimensions emerge</span>
                             </div>
                         </div>
 
-                        <!-- The Fingerprint Stage -->
+                        <!-- The Bloom Stage -->
                         <div class="fp-stage">
-                            <!-- Ambient glow behind fingerprint -->
+                            <!-- Ambient glow -->
                             <div class="fp-glow"></div>
 
-                            <!-- Authentic fingerprint ridges - whorl pattern with natural variation -->
-                            <svg class="fp-ridges" viewBox="0 0 200 200">
+                            <!-- Curio Bloom — multi-dimensional petal radar chart -->
+                            <svg class="ct-bloom" viewBox="-20 -10 240 220" overflow="visible">
                                 <defs>
-                                    <filter id="fp-ridge-glow">
-                                        <feGaussianBlur stdDeviation="1.2" result="blur"/>
-                                        <feMerge>
-                                            <feMergeNode in="blur"/>
-                                            <feMergeNode in="SourceGraphic"/>
-                                        </feMerge>
-                                    </filter>
+                                    <!-- Axis grid rings (subtle reference lines) -->
+                                    <radialGradient id="ct-center-glow" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%" stop-color="#ffd700" stop-opacity="0.6"/>
+                                        <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
+                                    </radialGradient>
                                 </defs>
-                                <!-- Whorl pattern - offset curves with natural irregularity -->
-                                <!-- Outer ridges - slightly irregular spacing -->
-                                <path class="fp-ridge fp-ridge-1" d="M22,102 Q24,38 72,22 Q125,8 162,42 Q192,72 186,115 Q178,155 145,178 Q105,198 55,182 Q22,168 22,102" />
-                                <path class="fp-ridge fp-ridge-2" d="M30,98 Q34,46 75,32 Q120,18 158,50 Q185,78 180,118 Q172,152 142,174 Q102,192 58,176 Q30,162 30,98" />
-                                <path class="fp-ridge fp-ridge-3" d="M38,100 Q42,54 78,42 Q118,28 152,58 Q175,84 171,120 Q165,150 138,170 Q100,186 62,170 Q38,156 38,100" />
-                                <path class="fp-ridge fp-ridge-4" d="M47,101 Q50,64 82,52 Q115,40 146,66 Q166,88 163,122 Q158,148 132,165 Q98,180 66,164 Q47,150 47,101" />
-                                <path class="fp-ridge fp-ridge-5" d="M55,100 Q58,70 85,60 Q112,50 140,74 Q158,94 155,124 Q150,150 126,163 Q96,176 70,160 Q55,146 55,100" />
-                                <!-- Inner loop ridges - tighter spiral -->
-                                <path class="fp-ridge fp-ridge-6" d="M64,102 Q68,76 92,68 Q114,60 134,82 Q150,100 146,126 Q140,148 118,160 Q92,170 72,154 Q64,140 64,102" />
-                                <path class="fp-ridge fp-ridge-7" d="M73,103 Q78,84 98,78 Q116,72 132,92 Q144,108 140,130 Q134,148 114,156 Q92,164 78,148 Q73,136 73,103" />
-                                <path class="fp-ridge fp-ridge-8" d="M83,105 Q88,92 104,88 Q118,84 130,102 Q138,116 134,134 Q128,148 110,152 Q94,156 86,142 Q83,130 83,105" />
-                                <!-- Core whorl - tightest inner spiral -->
-                                <path class="fp-ridge fp-ridge-core" d="M93,108 Q98,100 108,98 Q118,98 124,110 Q128,122 120,132 Q110,140 100,136 Q92,130 93,118 Q94,112 93,108" />
+
+                                <!-- Subtle axis grid — concentric hexagons -->
+                                <polygon class="ct-grid" points="100,70 126,85 126,115 100,130 74,115 74,85" />
+                                <polygon class="ct-grid ct-grid-outer" points="100,45 143,72.5 143,127.5 100,155 57,127.5 57,72.5" />
+
+                                <!-- Axis lines from center to each vertex -->
+                                <line class="ct-axis" x1="100" y1="100" x2="100" y2="30" />
+                                <line class="ct-axis" x1="100" y1="100" x2="148" y2="72" />
+                                <line class="ct-axis" x1="100" y1="100" x2="154" y2="131" />
+                                <line class="ct-axis" x1="100" y1="100" x2="100" y2="142" />
+                                <line class="ct-axis" x1="100" y1="100" x2="52" y2="128" />
+                                <line class="ct-axis" x1="100" y1="100" x2="57" y2="75" />
+
+                                <!-- Profile silhouette — the unique "shape" connecting petal tips -->
+                                <polygon class="ct-outline" points="100,30 148,72 154,131 100,142 52,128 57,75" />
+
+                                <!-- 6 Petals — each a filled teardrop, rotated from center -->
+                                <!-- P1: Wonder (Sky Blue) — top, longest -->
+                                <path class="ct-petal ct-petal-1" d="M100,100 C95,78 94,52 100,30 C106,52 105,78 100,100" />
+                                <!-- P2: Nature (Green) — top-right -->
+                                <g transform="rotate(60, 100, 100)">
+                                    <path class="ct-petal ct-petal-2" d="M100,100 C96,82 95,58 100,42 C105,58 104,82 100,100" />
+                                </g>
+                                <!-- P3: Creativity (Mustard) — bottom-right, long -->
+                                <g transform="rotate(120, 100, 100)">
+                                    <path class="ct-petal ct-petal-3" d="M100,100 C95,79 94,54 100,34 C106,54 105,79 100,100" />
+                                </g>
+                                <!-- P4: Social (Coral) — bottom, shortest -->
+                                <g transform="rotate(180, 100, 100)">
+                                    <path class="ct-petal ct-petal-4" d="M100,100 C96,85 96,68 100,58 C104,68 104,85 100,100" />
+                                </g>
+                                <!-- P5: Language (Lavender) — bottom-left -->
+                                <g transform="rotate(240, 100, 100)">
+                                    <path class="ct-petal ct-petal-5" d="M100,100 C96,83 95,60 100,44 C105,60 104,83 100,100" />
+                                </g>
+                                <!-- P6: Logic (Forest) — top-left -->
+                                <g transform="rotate(300, 100, 100)">
+                                    <path class="ct-petal ct-petal-6" d="M100,100 C96,84 95,62 100,48 C105,62 104,84 100,100" />
+                                </g>
+
+                                <!-- Tip nodes — small dots at each petal end -->
+                                <circle class="ct-tip ct-tip-1" cx="100" cy="30" r="4" />
+                                <circle class="ct-tip ct-tip-2" cx="148" cy="72" r="3.5" />
+                                <circle class="ct-tip ct-tip-3" cx="154" cy="131" r="3.8" />
+                                <circle class="ct-tip ct-tip-4" cx="100" cy="142" r="3" />
+                                <circle class="ct-tip ct-tip-5" cx="52" cy="128" r="3.5" />
+                                <circle class="ct-tip ct-tip-6" cx="57" cy="75" r="3.2" />
+
+                                <!-- Category labels — positioned well outside the petals/tips -->
+                                <text class="ct-label ct-label-1" x="100" y="10" text-anchor="middle">Wonder</text>
+                                <text class="ct-label ct-label-2" x="172" y="58" text-anchor="start">Nature</text>
+                                <text class="ct-label ct-label-3" x="176" y="148" text-anchor="start">Creative</text>
+                                <text class="ct-label ct-label-4" x="100" y="166" text-anchor="middle">Social</text>
+                                <text class="ct-label ct-label-5" x="28" y="144" text-anchor="end">Language</text>
+                                <text class="ct-label ct-label-6" x="32" y="62" text-anchor="end">Logic</text>
+
+                                <!-- Center spark -->
+                                <circle class="ct-center-glow" cx="100" cy="100" r="18" fill="url(#ct-center-glow)" />
+                                <circle class="ct-center" cx="100" cy="100" r="5" />
                             </svg>
 
-                            <!-- Minutiae points - detected interests along ridges -->
-                            <div class="fp-minutiae">
-                                <!-- Ridge endings = interests discovered, bifurcations = connected skills -->
-                                <span class="fp-point" style="--x: 25%; --y: 35%;" data-type="ending"></span>
-                                <span class="fp-point" style="--x: 70%; --y: 18%;" data-type="bifurcation"></span>
-                                <span class="fp-point" style="--x: 88%; --y: 52%;" data-type="ending"></span>
-                                <span class="fp-point" style="--x: 80%; --y: 80%;" data-type="bifurcation"></span>
-                                <span class="fp-point" style="--x: 40%; --y: 90%;" data-type="ending"></span>
-                                <span class="fp-point" style="--x: 15%; --y: 65%;" data-type="bifurcation"></span>
-                                <span class="fp-point" style="--x: 54%; --y: 54%;" data-type="core"></span>
-                                <span class="fp-point" style="--x: 65%; --y: 68%;" data-type="ending"></span>
-                            </div>
-
-                            <!-- Connection threads - interest network forming -->
-                            <svg class="fp-connections" viewBox="0 0 200 200">
-                                <!-- Outer ring connections -->
-                                <line class="fp-thread" x1="50" y1="70" x2="140" y2="36" />
-                                <line class="fp-thread" x1="140" y1="36" x2="176" y2="104" />
-                                <line class="fp-thread" x1="176" y1="104" x2="160" y2="160" />
-                                <line class="fp-thread" x1="160" y1="160" x2="80" y2="180" />
-                                <line class="fp-thread" x1="80" y1="180" x2="30" y2="130" />
-                                <line class="fp-thread" x1="30" y1="130" x2="50" y2="70" />
-                                <!-- Core connections - linking everything to center -->
-                                <line class="fp-thread fp-thread-core" x1="108" y1="108" x2="50" y2="70" />
-                                <line class="fp-thread fp-thread-core" x1="108" y1="108" x2="140" y2="36" />
-                                <line class="fp-thread fp-thread-core" x1="108" y1="108" x2="176" y2="104" />
-                                <line class="fp-thread fp-thread-core" x1="108" y1="108" x2="130" y2="136" />
-                                <line class="fp-thread fp-thread-core" x1="130" y1="136" x2="160" y2="160" />
-                                <line class="fp-thread fp-thread-core" x1="130" y1="136" x2="80" y2="180" />
-                            </svg>
-
-                            <!-- The Core - child's unique spark -->
-                            <div class="fp-core">
-                                <div class="fp-core-glow"></div>
-                                <div class="fp-core-center"></div>
-                            </div>
-
-                            <!-- Data particles flowing toward fingerprint during analysis -->
+                            <!-- Data particles flowing inward during explore phase -->
                             <div class="fp-data-flow">
                                 <span class="fp-data" style="--delay: 0s; --angle: 30deg;"></span>
-                                <span class="fp-data" style="--delay: 0.5s; --angle: 75deg;"></span>
-                                <span class="fp-data" style="--delay: 1s; --angle: 120deg;"></span>
-                                <span class="fp-data" style="--delay: 1.5s; --angle: 165deg;"></span>
-                                <span class="fp-data" style="--delay: 2s; --angle: 210deg;"></span>
-                                <span class="fp-data" style="--delay: 2.5s; --angle: 255deg;"></span>
-                                <span class="fp-data" style="--delay: 3s; --angle: 300deg;"></span>
-                                <span class="fp-data" style="--delay: 3.5s; --angle: 345deg;"></span>
+                                <span class="fp-data" style="--delay: 0.4s; --angle: 90deg;"></span>
+                                <span class="fp-data" style="--delay: 0.8s; --angle: 150deg;"></span>
+                                <span class="fp-data" style="--delay: 1.2s; --angle: 210deg;"></span>
+                                <span class="fp-data" style="--delay: 1.6s; --angle: 270deg;"></span>
+                                <span class="fp-data" style="--delay: 2.0s; --angle: 330deg;"></span>
                             </div>
                         </div>
 
@@ -646,7 +652,7 @@
             <h2>Spark a Fresh Perspective</h2>
             <p>Traditional education sees one path. We see infinite possibilities. Like light through a prism, every child's curiosity can shine in countless directions.</p>
             <p>Our platform reveals the full spectrum of your child's potential, transforming a single spark of interest into a rainbow of learning opportunities.</p>
-            <a href="#fingerprint" class="btn btn-primary">Discover How</a>
+            <a href="#curio-types" class="btn btn-primary">Discover How</a>
         </div>
     </section>
 

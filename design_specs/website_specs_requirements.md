@@ -114,7 +114,7 @@ Use CSS Grid to create the "Poketo" bento-box feel.
 3.  **Value Prop (The "Headspace" Cards):**
       * 3 cards horizontally: "Research-Backed," "Customized," "Right Pace."
       * Icons: Soft, colorful SVG icons.
-4.  **Curiosity Fingerprint:**
+4.  **Curio Types:**
       * Visual data visualization showing the personalized learning concept.
       * Floating animation for engagement.
 5.  **The Product (LumiBox):**

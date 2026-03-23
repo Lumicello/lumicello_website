@@ -583,7 +583,7 @@ a {
     animation: fade-up var(--duration-slower) var(--ease-out) var(--stagger-4) both;
 }
 
-/* Hero Visual - Constellation Fingerprint */
+/* Hero Visual - Constellation */
 .hero-visual {
     position: relative;
     animation: fade-up var(--duration-slowest) var(--ease-out) var(--stagger-5) both;
@@ -1143,13 +1143,13 @@ a {
 }
 
 /* ============================================
-   CURIOSITY FINGERPRINT CINEMA
-   "Mapping a Child's Unique Curiosity"
-   Immersive, cinematic fingerprint animation
+   CURIO TYPES CINEMA — "Curiosity Bloom"
+   A living radar chart that reveals a child's
+   unique curiosity profile across 6 dimensions
    ============================================ */
 
-/* --- Container & Dark Backdrop --- */
-.fingerprint-cinema {
+/* --- Container & Backdrop --- */
+.curio-cinema {
     position: relative;
     aspect-ratio: 1;
     display: flex;
@@ -1165,28 +1165,20 @@ a {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse at 50% 60%, rgba(242, 201, 76, 0.15) 0%, transparent 55%),
-        radial-gradient(ellipse at 20% 30%, rgba(100, 180, 255, 0.08) 0%, transparent 40%),
-        linear-gradient(160deg, #0a1420 0%, #0f1d30 40%, #152238 70%, #0d1825 100%);
+        radial-gradient(ellipse at 50% 55%, rgba(255, 255, 255, 0.04) 0%, transparent 60%),
+        linear-gradient(160deg, #0c1524 0%, #111e33 40%, #162540 70%, #0e1a2a 100%);
     z-index: 0;
 }
 
-/* Subtle scanline texture */
 .fp-backdrop::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(255, 255, 255, 0.015) 2px,
-        rgba(255, 255, 255, 0.015) 3px
-    );
+    background: radial-gradient(circle at 50% 50%, rgba(100, 130, 180, 0.06) 0%, transparent 70%);
     pointer-events: none;
 }
 
-/* --- Prominent Stage Header --- */
+/* --- Stage Header --- */
 .fp-stage-header {
     position: absolute;
     top: 16px;
@@ -1201,7 +1193,7 @@ a {
     transition: all 0.6s var(--ease-out);
 }
 
-.fingerprint-cinema.is-playing .fp-stage-header {
+.curio-cinema.is-playing .fp-stage-header {
     opacity: 1;
     transform: translateY(0);
 }
@@ -1211,10 +1203,10 @@ a {
     flex-direction: column;
     align-items: center;
     padding: 6px 10px;
-    background: rgba(242, 201, 76, 0.12);
-    border: 1px solid rgba(242, 201, 76, 0.25);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 8px;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
 }
 
 .fp-stage-step {
@@ -1223,17 +1215,16 @@ a {
     font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.4);
     line-height: 1;
 }
 
 .fp-scene-num {
     font-family: var(--font-heading);
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
-    color: #f2c94c;
+    color: rgba(255, 255, 255, 0.9);
     line-height: 1;
-    text-shadow: 0 0 20px rgba(242, 201, 76, 0.5);
 }
 
 .fp-stage-title {
@@ -1245,9 +1236,9 @@ a {
 
 .fp-scene-name {
     font-family: var(--font-heading);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #ffffff;
     line-height: 1.1;
@@ -1258,11 +1249,11 @@ a {
     font-family: var(--font-body);
     font-size: 10px;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.5);
     letter-spacing: 0.02em;
 }
 
-/* --- The Stage (LARGER - fills more space) --- */
+/* --- The Stage --- */
 .fp-stage {
     position: relative;
     width: 85%;
@@ -1276,260 +1267,123 @@ a {
 /* --- Ambient Glow --- */
 .fp-glow {
     position: absolute;
-    inset: -50%;
-    background: radial-gradient(circle, rgba(242, 201, 76, 0.25) 0%, transparent 55%);
+    inset: -40%;
+    background: radial-gradient(circle, rgba(79, 145, 205, 0.15) 0%, transparent 55%);
     opacity: 0;
     transition: opacity 0.8s ease-out;
-    animation: fp-glow-pulse 3s ease-in-out infinite;
 }
 
-@keyframes fp-glow-pulse {
-    0%,
-    100% {
-        transform: scale(1);
-        opacity: 0.4;
-    }
-    50% {
-        transform: scale(1.15);
-        opacity: 0.7;
-    }
-}
-
-/* --- Fingerprint Ridges (SVG) --- */
-.fp-ridges {
+/* --- Curio Bloom SVG --- */
+.ct-bloom {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    filter: url(#fp-ridge-glow);
 }
 
-.fp-ridge {
+/* Grid rings — subtle hexagonal reference lines */
+.ct-grid {
     fill: none;
-    stroke: #f2c94c;
-    stroke-linecap: round;
+    stroke: rgba(255, 255, 255, 0.06);
+    stroke-width: 0.5;
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+}
+
+.ct-grid-outer {
+    stroke: rgba(255, 255, 255, 0.04);
+}
+
+/* Axis lines — subtle spokes from center */
+.ct-axis {
+    stroke: rgba(255, 255, 255, 0.05);
+    stroke-width: 0.5;
+    stroke-dasharray: 3 3;
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+}
+
+/* Profile silhouette — the unique polygon connecting petal tips */
+.ct-outline {
+    fill: rgba(79, 145, 205, 0.06);
+    stroke: rgba(255, 255, 255, 0.25);
+    stroke-width: 1;
     stroke-linejoin: round;
     opacity: 0;
-    stroke-dasharray: 800;
-    stroke-dashoffset: 800;
-    transition: opacity 0.5s ease-out;
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+    transition: opacity 0.6s ease-out, fill 0.6s ease-out;
 }
 
-/* Ridge thickness - varies for depth */
-.fp-ridge-1 {
-    stroke-width: 1.8;
-    stroke: rgba(242, 201, 76, 0.65);
-}
-.fp-ridge-2 {
-    stroke-width: 1.9;
-    stroke: rgba(242, 201, 76, 0.7);
-}
-.fp-ridge-3 {
-    stroke-width: 2;
-    stroke: rgba(242, 201, 76, 0.75);
-}
-.fp-ridge-4 {
-    stroke-width: 2.1;
-    stroke: rgba(242, 201, 76, 0.8);
-}
-.fp-ridge-5 {
-    stroke-width: 2.2;
-    stroke: rgba(242, 201, 76, 0.85);
-}
-.fp-ridge-6 {
-    stroke-width: 2.3;
-    stroke: rgba(242, 201, 76, 0.9);
-}
-.fp-ridge-7 {
-    stroke-width: 2.4;
-    stroke: rgba(242, 201, 76, 0.95);
-}
-.fp-ridge-8 {
-    stroke-width: 2.5;
-    stroke: #f2c94c;
-}
-.fp-ridge-core {
-    stroke-width: 3;
-    stroke: #ffd700;
-}
-
-/* --- Minutiae Points (Interest Markers) --- */
-.fp-minutiae {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-}
-
-.fp-point {
-    position: absolute;
-    left: var(--x);
-    top: var(--y);
-    width: 10px;
-    height: 10px;
-    transform: translate(-50%, -50%) scale(0);
+/* --- Petals — filled teardrop shapes, each with its own color --- */
+.ct-petal {
     opacity: 0;
-    transition: all 0.5s var(--ease-bounce);
-}
-
-.fp-point::before {
-    content: "";
-    position: absolute;
-    inset: -6px;
-    background: radial-gradient(circle, rgba(242, 201, 76, 0.6) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: fp-point-glow 2s ease-in-out infinite;
-}
-
-.fp-point::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #ffd700 0%, #f2c94c 100%);
-    border-radius: 50%;
-    box-shadow:
-        0 0 10px rgba(242, 201, 76, 0.9),
-        0 0 20px rgba(242, 201, 76, 0.5);
-}
-
-/* Different point types */
-.fp-point[data-type="core"]::after {
-    background: linear-gradient(135deg, #ff8c00 0%, #ffd700 100%);
-    box-shadow:
-        0 0 15px rgba(255, 140, 0, 1),
-        0 0 30px rgba(242, 201, 76, 0.6);
-}
-
-.fp-point[data-type="bifurcation"]::after {
-    width: 8px;
-    height: 8px;
-    top: 1px;
-    left: 1px;
-}
-
-@keyframes fp-point-glow {
-    0%,
-    100% {
-        transform: scale(1);
-        opacity: 0.6;
-    }
-    50% {
-        transform: scale(1.5);
-        opacity: 1;
-    }
-}
-
-/* Stagger point appearances */
-.fp-point:nth-child(1) {
-    transition-delay: 0.1s;
-}
-.fp-point:nth-child(2) {
-    transition-delay: 0.2s;
-}
-.fp-point:nth-child(3) {
-    transition-delay: 0.3s;
-}
-.fp-point:nth-child(4) {
-    transition-delay: 0.4s;
-}
-.fp-point:nth-child(5) {
-    transition-delay: 0.5s;
-}
-.fp-point:nth-child(6) {
-    transition-delay: 0.6s;
-}
-.fp-point:nth-child(7) {
-    transition-delay: 0s;
-}
-.fp-point:nth-child(8) {
-    transition-delay: 0.7s;
-}
-
-/* --- Connection Threads (Interest Network) - MORE VISIBLE --- */
-.fp-connections {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.fp-thread {
-    stroke: rgba(100, 180, 255, 0.7);
-    stroke-width: 2;
+    fill-opacity: 0;
+    stroke-width: 1.5;
     stroke-linecap: round;
-    stroke-dasharray: 200;
-    stroke-dashoffset: 200;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    transition: opacity 0.5s ease-out, fill-opacity 0.8s ease-out;
+}
+
+/* Petal colors — Lumicello brand palette */
+.ct-petal-1 { stroke: #4F91CD; fill: #4F91CD; }  /* Wonder — Sky Blue */
+.ct-petal-2 { stroke: #5C8D4E; fill: #5C8D4E; }  /* Nature — Green */
+.ct-petal-3 { stroke: #D9A835; fill: #D9A835; }  /* Creative — Mustard */
+.ct-petal-4 { stroke: #E8855E; fill: #E8855E; }  /* Social — Coral */
+.ct-petal-5 { stroke: #9B8FC7; fill: #9B8FC7; }  /* Language — Lavender */
+.ct-petal-6 { stroke: #4A5D4B; fill: #4A5D4B; }  /* Logic — Forest */
+
+/* --- Tip Nodes — small circles at each petal endpoint --- */
+.ct-tip {
+    fill: #ffffff;
     opacity: 0;
-    transition: opacity 0.5s ease-out;
-    filter: drop-shadow(0 0 4px rgba(100, 180, 255, 0.5));
+    transform-origin: center;
+    transform: scale(0);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
 }
 
-.fp-thread-core {
-    stroke: rgba(242, 201, 76, 0.8);
-    stroke-width: 2.5;
-    filter: drop-shadow(0 0 6px rgba(242, 201, 76, 0.6));
-}
+.ct-tip-1 { fill: #4F91CD; filter: drop-shadow(0 0 6px rgba(79, 145, 205, 0.8)); }
+.ct-tip-2 { fill: #5C8D4E; filter: drop-shadow(0 0 6px rgba(92, 141, 78, 0.8)); }
+.ct-tip-3 { fill: #D9A835; filter: drop-shadow(0 0 6px rgba(217, 168, 53, 0.8)); }
+.ct-tip-4 { fill: #E8855E; filter: drop-shadow(0 0 6px rgba(232, 133, 94, 0.8)); }
+.ct-tip-5 { fill: #9B8FC7; filter: drop-shadow(0 0 6px rgba(155, 143, 199, 0.8)); }
+.ct-tip-6 { fill: #4A5D4B; filter: drop-shadow(0 0 6px rgba(74, 93, 75, 0.8)); }
 
-/* --- The Core (Child's Spark) --- */
-.fp-core {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
+/* --- Category Labels --- */
+.ct-label {
+    font-family: var(--font-body);
+    font-size: 7px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    fill: rgba(255, 255, 255, 0.7);
     opacity: 0;
-    transition: all 0.8s var(--ease-bounce);
+    transition: opacity 0.6s ease-out;
 }
 
-.fp-core-glow {
-    position: absolute;
-    inset: -20px;
-    background: radial-gradient(circle, rgba(242, 201, 76, 0.7) 0%, transparent 65%);
-    border-radius: 50%;
+.ct-label-1 { fill: #7AB3E0; }
+.ct-label-2 { fill: #82B272; }
+.ct-label-3 { fill: #E8C35A; }
+.ct-label-4 { fill: #F0A080; }
+.ct-label-5 { fill: #B5ABD6; }
+.ct-label-6 { fill: #7A9A7B; }
+
+/* --- Center Spark --- */
+.ct-center-glow {
     opacity: 0;
-    animation: fp-core-pulse 2s ease-in-out infinite;
+    transition: opacity 0.8s ease-out;
 }
 
-@keyframes fp-core-pulse {
-    0%,
-    100% {
-        transform: scale(1);
-        opacity: 0.7;
-    }
-    50% {
-        transform: scale(1.4);
-        opacity: 1;
-    }
+.ct-center {
+    fill: #ffffff;
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
 }
 
-.fp-core-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
-    border-radius: 50%;
-    box-shadow:
-        0 0 20px rgba(255, 200, 100, 1),
-        0 0 40px rgba(242, 201, 76, 0.7),
-        0 0 60px rgba(242, 201, 76, 0.4);
-    animation: fp-core-beat 1.5s ease-in-out infinite;
-}
-
-@keyframes fp-core-beat {
-    0%,
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.25);
-    }
-}
-
-/* --- Data Flow Particles (Analysis Phase) --- */
+/* --- Data Flow Particles --- */
 .fp-data-flow {
     position: absolute;
     inset: -40%;
@@ -1540,37 +1394,41 @@ a {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 5px;
-    height: 5px;
-    background: #64b4ff;
+    width: 3px;
+    height: 3px;
     border-radius: 50%;
     opacity: 0;
-    box-shadow:
-        0 0 8px #64b4ff,
-        0 0 16px rgba(100, 180, 255, 0.6);
     transform: rotate(var(--angle)) translateX(140%);
 }
 
-@keyframes fp-data-flow-in {
+/* Color particles to match petal colors */
+.fp-data:nth-child(1) { background: #4F91CD; box-shadow: 0 0 6px #4F91CD; }
+.fp-data:nth-child(2) { background: #5C8D4E; box-shadow: 0 0 6px #5C8D4E; }
+.fp-data:nth-child(3) { background: #D9A835; box-shadow: 0 0 6px #D9A835; }
+.fp-data:nth-child(4) { background: #E8855E; box-shadow: 0 0 6px #E8855E; }
+.fp-data:nth-child(5) { background: #9B8FC7; box-shadow: 0 0 6px #9B8FC7; }
+.fp-data:nth-child(6) { background: #4A5D4B; box-shadow: 0 0 6px #7A9A7B; }
+
+@keyframes ct-data-flow-in {
     0% {
         opacity: 0;
-        transform: rotate(var(--angle)) translateX(140%) scale(0.5);
+        transform: rotate(var(--angle)) translateX(160%) scale(0.5);
     }
-    15% {
-        opacity: 1;
+    20% {
+        opacity: 0.9;
         transform: rotate(var(--angle)) translateX(120%) scale(1);
     }
-    85% {
-        opacity: 0.9;
-        transform: rotate(var(--angle)) translateX(25%) scale(0.9);
+    80% {
+        opacity: 0.7;
+        transform: rotate(var(--angle)) translateX(20%) scale(0.8);
     }
     100% {
         opacity: 0;
-        transform: rotate(var(--angle)) translateX(10%) scale(0.3);
+        transform: rotate(var(--angle)) translateX(5%) scale(0.2);
     }
 }
 
-/* --- Timeline Progress (bottom) --- */
+/* --- Timeline Progress --- */
 .fp-timeline {
     position: absolute;
     bottom: 14px;
@@ -1585,14 +1443,14 @@ a {
     transition: opacity 0.5s ease-out;
 }
 
-.fingerprint-cinema.is-playing .fp-timeline {
+.curio-cinema.is-playing .fp-timeline {
     opacity: 1;
 }
 
 .fp-timeline-track {
     width: 100px;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.12);
+    height: 3px;
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 4px;
     overflow: hidden;
 }
@@ -1600,10 +1458,9 @@ a {
 .fp-timeline-fill {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, #64b4ff 0%, #f2c94c 50%, #ff8c00 100%);
+    background: linear-gradient(90deg, #4F91CD 0%, #D9A835 50%, #E8855E 100%);
     border-radius: 4px;
     transition: width 0.3s linear;
-    box-shadow: 0 0 10px rgba(242, 201, 76, 0.6);
 }
 
 .fp-timeline-dots {
@@ -1612,76 +1469,75 @@ a {
 }
 
 .fp-dot {
-    width: 8px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.25);
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     transition: all 0.3s ease-out;
     cursor: pointer;
 }
 
 .fp-dot.active {
-    background: #f2c94c;
-    box-shadow: 0 0 12px rgba(242, 201, 76, 0.8);
-    transform: scale(1.4);
+    background: #ffffff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    transform: scale(1.5);
 }
 
 .fp-dot.passed {
-    background: rgba(242, 201, 76, 0.6);
+    background: rgba(255, 255, 255, 0.5);
 }
 
 /* ============================================
-   CINEMA ACTS - Coherent Curiosity Fingerprint Story
-   Each act is DISTINCT with clear visual changes
-   ACT 1: SCAN - Fingerprint appears (ridges draw in)
-   ACT 2: ANALYZE - Data flows in, points light up
-   ACT 3: MAP - Connections form (BRIGHT BLUE lines)
-   ACT 4: PROFILE - Living, breathing curiosity map
+   CINEMA ACTS — Curio Bloom Story
+   ACT 1: DISCOVER — Grid + axes fade in, petals draw as stroked outlines
+   ACT 2: EXPLORE — Particles flow in, petals fill with color, tips appear
+   ACT 3: CONNECT — Profile outline traces between tips, center glows
+   ACT 4: REVEAL — Everything breathes, labels appear, living profile
    ============================================ */
 
-/* --- ACT 1: SCAN - Fingerprint Ridges Draw In --- */
-.fingerprint-cinema[data-act="1"] .fp-glow {
-    opacity: 0.4;
+/* --- ACT 1: DISCOVER — Structure Emerges --- */
+.curio-cinema[data-act="1"] .fp-glow {
+    opacity: 0.3;
 }
 
-.fingerprint-cinema[data-act="1"] .fp-ridge {
+.curio-cinema[data-act="1"] .ct-grid {
     opacity: 1;
-    animation: fp-draw-ridge 2s ease-out forwards;
+    animation: ct-grid-fade-in 1.2s ease-out forwards;
 }
 
-/* Stagger ridge drawing from outer to inner */
-.fingerprint-cinema[data-act="1"] .fp-ridge-1 {
-    animation-delay: 0s;
-}
-.fingerprint-cinema[data-act="1"] .fp-ridge-2 {
-    animation-delay: 0.12s;
-}
-.fingerprint-cinema[data-act="1"] .fp-ridge-3 {
-    animation-delay: 0.24s;
-}
-.fingerprint-cinema[data-act="1"] .fp-ridge-4 {
-    animation-delay: 0.36s;
-}
-.fingerprint-cinema[data-act="1"] .fp-ridge-5 {
-    animation-delay: 0.48s;
-}
-.fingerprint-cinema[data-act="1"] .fp-ridge-6 {
-    animation-delay: 0.6s;
-}
-.fingerprint-cinema[data-act="1"] .fp-ridge-7 {
-    animation-delay: 0.72s;
-}
-.fingerprint-cinema[data-act="1"] .fp-ridge-8 {
-    animation-delay: 0.84s;
-}
-.fingerprint-cinema[data-act="1"] .fp-ridge-core {
-    animation-delay: 0.96s;
+@keyframes ct-grid-fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
-@keyframes fp-draw-ridge {
+.curio-cinema[data-act="1"] .ct-axis {
+    opacity: 1;
+    animation: ct-axis-draw 1.5s ease-out forwards;
+}
+
+@keyframes ct-axis-draw {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Petals draw as stroked outlines (unfilled) */
+.curio-cinema[data-act="1"] .ct-petal {
+    opacity: 1;
+    fill-opacity: 0;
+    animation: ct-petal-draw 1.8s ease-out forwards;
+}
+
+.curio-cinema[data-act="1"] .ct-petal-1 { animation-delay: 0s; }
+.curio-cinema[data-act="1"] .ct-petal-2 { animation-delay: 0.15s; }
+.curio-cinema[data-act="1"] .ct-petal-3 { animation-delay: 0.3s; }
+.curio-cinema[data-act="1"] .ct-petal-4 { animation-delay: 0.45s; }
+.curio-cinema[data-act="1"] .ct-petal-5 { animation-delay: 0.6s; }
+.curio-cinema[data-act="1"] .ct-petal-6 { animation-delay: 0.75s; }
+
+@keyframes ct-petal-draw {
     0% {
-        stroke-dashoffset: 800;
-        opacity: 0.2;
+        stroke-dashoffset: 300;
+        opacity: 0.3;
     }
     100% {
         stroke-dashoffset: 0;
@@ -1689,315 +1545,261 @@ a {
     }
 }
 
-/* --- ACT 2: ANALYZE - Data Flows In, Points Appear --- */
-.fingerprint-cinema[data-act="2"] .fp-glow {
-    opacity: 0.5;
+.curio-cinema[data-act="1"] .ct-center {
+    opacity: 0.6;
 }
 
-.fingerprint-cinema[data-act="2"] .fp-ridge {
+/* --- ACT 2: EXPLORE — Color Fills In --- */
+.curio-cinema[data-act="2"] .fp-glow {
+    opacity: 0.4;
+    background: radial-gradient(circle,
+        rgba(79, 145, 205, 0.1) 0%,
+        rgba(217, 168, 53, 0.08) 30%,
+        transparent 60%);
+}
+
+.curio-cinema[data-act="2"] .ct-grid { opacity: 1; }
+.curio-cinema[data-act="2"] .ct-axis { opacity: 1; }
+
+/* Petals fill with color */
+.curio-cinema[data-act="2"] .ct-petal {
     opacity: 1;
     stroke-dashoffset: 0;
+    fill-opacity: 0.35;
+    animation: ct-petal-fill 1s ease-out forwards;
 }
 
-/* Data particles flow inward - ACTIVE */
-.fingerprint-cinema[data-act="2"] .fp-data {
-    animation: fp-data-flow-in 1.8s ease-out infinite;
+.curio-cinema[data-act="2"] .ct-petal-1 { animation-delay: 0.1s; }
+.curio-cinema[data-act="2"] .ct-petal-2 { animation-delay: 0.2s; }
+.curio-cinema[data-act="2"] .ct-petal-3 { animation-delay: 0.3s; }
+.curio-cinema[data-act="2"] .ct-petal-4 { animation-delay: 0.4s; }
+.curio-cinema[data-act="2"] .ct-petal-5 { animation-delay: 0.5s; }
+.curio-cinema[data-act="2"] .ct-petal-6 { animation-delay: 0.6s; }
+
+@keyframes ct-petal-fill {
+    0% { fill-opacity: 0; }
+    100% { fill-opacity: 0.35; }
+}
+
+/* Tip nodes pop in */
+.curio-cinema[data-act="2"] .ct-tip {
+    opacity: 1;
+    transform: scale(1);
+    animation: ct-tip-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.curio-cinema[data-act="2"] .ct-tip-1 { animation-delay: 0.15s; }
+.curio-cinema[data-act="2"] .ct-tip-2 { animation-delay: 0.3s; }
+.curio-cinema[data-act="2"] .ct-tip-3 { animation-delay: 0.45s; }
+.curio-cinema[data-act="2"] .ct-tip-4 { animation-delay: 0.6s; }
+.curio-cinema[data-act="2"] .ct-tip-5 { animation-delay: 0.75s; }
+.curio-cinema[data-act="2"] .ct-tip-6 { animation-delay: 0.9s; }
+
+@keyframes ct-tip-pop {
+    0% { transform: scale(0); opacity: 0; }
+    70% { transform: scale(1.4); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Data particles flow inward */
+.curio-cinema[data-act="2"] .fp-data {
+    animation: ct-data-flow-in 2s ease-out infinite;
     animation-delay: var(--delay);
 }
 
-/* Minutiae points pop in */
-.fingerprint-cinema[data-act="2"] .fp-point {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    animation: fp-point-pop 0.5s var(--ease-bounce) forwards;
+.curio-cinema[data-act="2"] .ct-center {
+    opacity: 0.8;
 }
 
-@keyframes fp-point-pop {
+.curio-cinema[data-act="2"] .ct-center-glow {
+    opacity: 0.4;
+}
+
+/* --- ACT 3: CONNECT — Profile Outline Traces --- */
+.curio-cinema[data-act="3"] .fp-glow {
+    opacity: 0.5;
+}
+
+.curio-cinema[data-act="3"] .ct-grid { opacity: 0.6; }
+.curio-cinema[data-act="3"] .ct-axis { opacity: 0.6; }
+
+.curio-cinema[data-act="3"] .ct-petal {
+    opacity: 1;
+    stroke-dashoffset: 0;
+    fill-opacity: 0.25;
+}
+
+.curio-cinema[data-act="3"] .ct-tip {
+    opacity: 1;
+    transform: scale(1);
+    animation: ct-tip-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes ct-tip-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* Profile outline draws — the signature moment */
+.curio-cinema[data-act="3"] .ct-outline {
+    opacity: 1;
+    fill: rgba(79, 145, 205, 0.08);
+    animation: ct-outline-draw 1.8s ease-out forwards;
+}
+
+@keyframes ct-outline-draw {
     0% {
-        transform: translate(-50%, -50%) scale(0);
+        stroke-dashoffset: 600;
         opacity: 0;
+        fill: rgba(79, 145, 205, 0);
     }
     60% {
-        transform: translate(-50%, -50%) scale(1.3);
         opacity: 1;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-    }
-}
-
-/* --- ACT 3: MAP - Connections Form (HIGHLY VISIBLE) --- */
-.fingerprint-cinema[data-act="3"] .fp-glow {
-    opacity: 0.5;
-    background: radial-gradient(circle, rgba(100, 180, 255, 0.3) 0%, transparent 55%);
-}
-
-.fingerprint-cinema[data-act="3"] .fp-ridge {
-    opacity: 0.6;
-    stroke-dashoffset: 0;
-}
-
-.fingerprint-cinema[data-act="3"] .fp-point {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    animation: fp-point-pulse-map 1s ease-in-out infinite;
-}
-
-@keyframes fp-point-pulse-map {
-    0%,
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-        box-shadow: 0 0 10px rgba(242, 201, 76, 0.8);
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.2);
-        box-shadow: 0 0 20px rgba(242, 201, 76, 1);
-    }
-}
-
-/* Connection threads draw - BRIGHT AND VISIBLE */
-.fingerprint-cinema[data-act="3"] .fp-thread {
-    opacity: 1;
-    animation: fp-draw-thread-bright 0.8s ease-out forwards;
-}
-
-/* Faster stagger for threads */
-.fingerprint-cinema[data-act="3"] .fp-thread:nth-child(1) {
-    animation-delay: 0s;
-}
-.fingerprint-cinema[data-act="3"] .fp-thread:nth-child(2) {
-    animation-delay: 0.1s;
-}
-.fingerprint-cinema[data-act="3"] .fp-thread:nth-child(3) {
-    animation-delay: 0.2s;
-}
-.fingerprint-cinema[data-act="3"] .fp-thread:nth-child(4) {
-    animation-delay: 0.3s;
-}
-.fingerprint-cinema[data-act="3"] .fp-thread:nth-child(5) {
-    animation-delay: 0.4s;
-}
-.fingerprint-cinema[data-act="3"] .fp-thread:nth-child(6) {
-    animation-delay: 0.5s;
-}
-.fingerprint-cinema[data-act="3"] .fp-thread:nth-child(7) {
-    animation-delay: 0.6s;
-}
-.fingerprint-cinema[data-act="3"] .fp-thread:nth-child(8) {
-    animation-delay: 0.7s;
-}
-.fingerprint-cinema[data-act="3"] .fp-thread:nth-child(9) {
-    animation-delay: 0.8s;
-}
-.fingerprint-cinema[data-act="3"] .fp-thread:nth-child(10) {
-    animation-delay: 0.9s;
-}
-.fingerprint-cinema[data-act="3"] .fp-thread:nth-child(11) {
-    animation-delay: 1s;
-}
-.fingerprint-cinema[data-act="3"] .fp-thread:nth-child(12) {
-    animation-delay: 1.1s;
-}
-
-@keyframes fp-draw-thread-bright {
-    0% {
-        stroke-dashoffset: 200;
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
+        fill: rgba(79, 145, 205, 0);
     }
     100% {
         stroke-dashoffset: 0;
         opacity: 1;
+        fill: rgba(79, 145, 205, 0.08);
     }
 }
 
-/* Core begins to glow during mapping */
-.fingerprint-cinema[data-act="3"] .fp-core {
+.curio-cinema[data-act="3"] .ct-center {
     opacity: 1;
 }
 
-.fingerprint-cinema[data-act="3"] .fp-core-glow {
+.curio-cinema[data-act="3"] .ct-center-glow {
+    opacity: 0.7;
+    animation: ct-center-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ct-center-pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+/* --- ACT 4: REVEAL — Living Curio Types Profile --- */
+.curio-cinema[data-act="4"] .fp-glow {
     opacity: 0.6;
-    background: radial-gradient(circle, rgba(100, 180, 255, 0.5) 0%, transparent 65%);
+    animation: ct-glow-breathe 4s ease-in-out infinite;
 }
 
-.fingerprint-cinema[data-act="3"] .fp-core-center {
-    opacity: 0.8;
-    background: linear-gradient(135deg, #64b4ff 0%, #f2c94c 100%);
+@keyframes ct-glow-breathe {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
 }
 
-/* --- ACT 4: PROFILE - Complete Living Fingerprint --- */
-.fingerprint-cinema[data-act="4"] .fp-glow {
-    opacity: 1;
-    animation: fp-glow-breathe 3s ease-in-out infinite;
-}
+.curio-cinema[data-act="4"] .ct-grid { opacity: 0.4; }
+.curio-cinema[data-act="4"] .ct-axis { opacity: 0.4; }
 
-@keyframes fp-glow-breathe {
-    0%,
-    100% {
-        opacity: 0.7;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.15);
-    }
-}
-
-.fingerprint-cinema[data-act="4"] .fp-ridge {
+/* Petals breathe with staggered timing */
+.curio-cinema[data-act="4"] .ct-petal {
     opacity: 1;
     stroke-dashoffset: 0;
-    animation: fp-ridge-breathe 3s ease-in-out infinite;
+    fill-opacity: 0.3;
+    animation: ct-petal-breathe 3.5s ease-in-out infinite;
 }
 
-@keyframes fp-ridge-breathe {
-    0%,
-    100% {
-        opacity: 0.9;
-        filter: brightness(1);
-    }
-    50% {
-        opacity: 1;
-        filter: brightness(1.3);
-    }
+.curio-cinema[data-act="4"] .ct-petal-1 { animation-delay: 0s; }
+.curio-cinema[data-act="4"] .ct-petal-2 { animation-delay: 0.3s; }
+.curio-cinema[data-act="4"] .ct-petal-3 { animation-delay: 0.6s; }
+.curio-cinema[data-act="4"] .ct-petal-4 { animation-delay: 0.9s; }
+.curio-cinema[data-act="4"] .ct-petal-5 { animation-delay: 1.2s; }
+.curio-cinema[data-act="4"] .ct-petal-6 { animation-delay: 1.5s; }
+
+@keyframes ct-petal-breathe {
+    0%, 100% { fill-opacity: 0.25; filter: brightness(1); }
+    50% { fill-opacity: 0.45; filter: brightness(1.2); }
 }
 
-/* Stagger ridge breathing */
-.fingerprint-cinema[data-act="4"] .fp-ridge-1 {
-    animation-delay: 0s;
-}
-.fingerprint-cinema[data-act="4"] .fp-ridge-2 {
-    animation-delay: 0.15s;
-}
-.fingerprint-cinema[data-act="4"] .fp-ridge-3 {
-    animation-delay: 0.3s;
-}
-.fingerprint-cinema[data-act="4"] .fp-ridge-4 {
-    animation-delay: 0.45s;
-}
-.fingerprint-cinema[data-act="4"] .fp-ridge-5 {
-    animation-delay: 0.6s;
-}
-.fingerprint-cinema[data-act="4"] .fp-ridge-6 {
-    animation-delay: 0.75s;
-}
-.fingerprint-cinema[data-act="4"] .fp-ridge-7 {
-    animation-delay: 0.9s;
-}
-.fingerprint-cinema[data-act="4"] .fp-ridge-8 {
-    animation-delay: 1.05s;
-}
-.fingerprint-cinema[data-act="4"] .fp-ridge-core {
-    animation-delay: 1.2s;
-}
-
-.fingerprint-cinema[data-act="4"] .fp-point {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    animation: fp-point-float 2.5s ease-in-out infinite;
-}
-
-@keyframes fp-point-float {
-    0%,
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
-        transform: translate(-50%, calc(-50% - 3px)) scale(1.15);
-    }
-}
-
-/* Stagger point floating */
-.fingerprint-cinema[data-act="4"] .fp-point:nth-child(1) {
-    animation-delay: 0s;
-}
-.fingerprint-cinema[data-act="4"] .fp-point:nth-child(2) {
-    animation-delay: 0.25s;
-}
-.fingerprint-cinema[data-act="4"] .fp-point:nth-child(3) {
-    animation-delay: 0.5s;
-}
-.fingerprint-cinema[data-act="4"] .fp-point:nth-child(4) {
-    animation-delay: 0.75s;
-}
-.fingerprint-cinema[data-act="4"] .fp-point:nth-child(5) {
-    animation-delay: 1s;
-}
-.fingerprint-cinema[data-act="4"] .fp-point:nth-child(6) {
-    animation-delay: 1.25s;
-}
-.fingerprint-cinema[data-act="4"] .fp-point:nth-child(7) {
-    animation-delay: 0.125s;
-}
-.fingerprint-cinema[data-act="4"] .fp-point:nth-child(8) {
-    animation-delay: 1.5s;
-}
-
-/* Threads pulse with energy */
-.fingerprint-cinema[data-act="4"] .fp-thread {
+/* Outline visible and gently pulsing */
+.curio-cinema[data-act="4"] .ct-outline {
     opacity: 1;
     stroke-dashoffset: 0;
-    animation: fp-thread-pulse 2s ease-in-out infinite;
+    fill: rgba(79, 145, 205, 0.06);
+    animation: ct-outline-pulse 3s ease-in-out infinite;
 }
 
-@keyframes fp-thread-pulse {
-    0%,
-    100% {
-        opacity: 0.5;
-        stroke-width: 2;
+@keyframes ct-outline-pulse {
+    0%, 100% {
+        stroke: rgba(255, 255, 255, 0.2);
+        fill: rgba(79, 145, 205, 0.04);
     }
     50% {
-        opacity: 1;
-        stroke-width: 3;
+        stroke: rgba(255, 255, 255, 0.35);
+        fill: rgba(79, 145, 205, 0.1);
     }
 }
 
-/* Full core activation - BRIGHT */
-.fingerprint-cinema[data-act="4"] .fp-core {
+/* Tips float gently */
+.curio-cinema[data-act="4"] .ct-tip {
     opacity: 1;
+    transform: scale(1);
+    animation: ct-tip-float 3s ease-in-out infinite;
 }
 
-.fingerprint-cinema[data-act="4"] .fp-core-glow {
+.curio-cinema[data-act="4"] .ct-tip-1 { animation-delay: 0s; }
+.curio-cinema[data-act="4"] .ct-tip-2 { animation-delay: 0.4s; }
+.curio-cinema[data-act="4"] .ct-tip-3 { animation-delay: 0.8s; }
+.curio-cinema[data-act="4"] .ct-tip-4 { animation-delay: 1.2s; }
+.curio-cinema[data-act="4"] .ct-tip-5 { animation-delay: 1.6s; }
+.curio-cinema[data-act="4"] .ct-tip-6 { animation-delay: 2.0s; }
+
+@keyframes ct-tip-float {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Labels appear */
+.curio-cinema[data-act="4"] .ct-label {
     opacity: 1;
-    animation: fp-core-radiate 2s ease-in-out infinite;
+    animation: ct-label-fade 0.8s ease-out forwards;
 }
 
-@keyframes fp-core-radiate {
-    0%,
-    100% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    50% {
-        transform: scale(1.5);
-        opacity: 1;
-    }
+.curio-cinema[data-act="4"] .ct-label-1 { animation-delay: 0.2s; }
+.curio-cinema[data-act="4"] .ct-label-2 { animation-delay: 0.35s; }
+.curio-cinema[data-act="4"] .ct-label-3 { animation-delay: 0.5s; }
+.curio-cinema[data-act="4"] .ct-label-4 { animation-delay: 0.65s; }
+.curio-cinema[data-act="4"] .ct-label-5 { animation-delay: 0.8s; }
+.curio-cinema[data-act="4"] .ct-label-6 { animation-delay: 0.95s; }
+
+@keyframes ct-label-fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
-.fingerprint-cinema[data-act="4"] .fp-core-center {
+/* Center fully alive */
+.curio-cinema[data-act="4"] .ct-center {
     opacity: 1;
-    background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+    animation: ct-center-beat 2s ease-in-out infinite;
 }
 
-/* Stage breathes gently */
-.fingerprint-cinema[data-act="4"] .fp-stage {
-    animation: fp-stage-breathe 4s ease-in-out infinite;
+@keyframes ct-center-beat {
+    0%, 100% { r: 5; }
+    50% { r: 6.5; }
 }
 
-@keyframes fp-stage-breathe {
-    0%,
-    100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.04);
-    }
+.curio-cinema[data-act="4"] .ct-center-glow {
+    opacity: 1;
+    animation: ct-center-radiate 3s ease-in-out infinite;
 }
 
-/* Responsive adjustments */
+@keyframes ct-center-radiate {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* Stage breathes */
+.curio-cinema[data-act="4"] .fp-stage {
+    animation: ct-stage-breathe 5s ease-in-out infinite;
+}
+
+@keyframes ct-stage-breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+}
+
+/* --- Responsive --- */
 @media (max-width: 768px) {
     .fp-stage {
         width: 80%;
@@ -2012,22 +1814,10 @@ a {
         gap: 8px;
     }
 
-    .fp-scene-num {
-        font-size: 20px;
-    }
-
-    .fp-scene-name {
-        font-size: 14px;
-    }
-
-    .fp-stage-desc {
-        font-size: 9px;
-    }
-
-    .fp-point {
-        width: 8px;
-        height: 8px;
-    }
+    .fp-scene-num { font-size: 18px; }
+    .fp-scene-name { font-size: 13px; }
+    .fp-stage-desc { font-size: 9px; }
+    .ct-label { font-size: 6px; }
 
     .fp-timeline {
         bottom: 10px;
@@ -2035,16 +1825,6 @@ a {
 
     .fp-timeline-track {
         width: 80px;
-    }
-
-    .fp-core {
-        width: 40px;
-        height: 40px;
-    }
-
-    .fp-core-center {
-        width: 16px;
-        height: 16px;
     }
 }
 
@@ -4629,21 +4409,6 @@ a.community-card-link {
         padding: var(--space-xl);
     }
 
-    /* Fingerprint Neural Map - Mobile */
-    .fingerprint-neural-map {
-        width: 180px;
-        height: 180px;
-    }
-
-    .fp-node {
-        width: 12px;
-        height: 12px;
-    }
-
-    .fp-core-center {
-        width: 18px;
-        height: 18px;
-    }
 
     .fp-core-ring {
         width: 34px;
