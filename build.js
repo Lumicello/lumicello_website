@@ -16,6 +16,7 @@ const DIST_DIR = 'dist';
 // Files and folders to include (whitelist approach for security)
 const PUBLIC_FILES = [
     'index.html',
+    'lumibox.html',
     'contact.html',
     'privacy.html',
     'terms.html',
