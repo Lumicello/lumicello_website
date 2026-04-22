@@ -2,7 +2,7 @@
 
 This document captures security choices, design decisions, and troubleshooting guidance for the Lumicello website.
 
-**Last Updated:** 2025-12-13
+**Last Updated:** 2026-04-22
 **Maintained By:** Development Team
 
 ---
@@ -17,7 +17,8 @@ This document captures security choices, design decisions, and troubleshooting g
 6. [Structured Data (JSON-LD)](#structured-data-json-ld)
 7. [AI Crawler Policy](#ai-crawler-policy)
 8. [Analytics (Umami)](#analytics-umami)
-9. [Troubleshooting Guide](#troubleshooting-guide)
+9. [Analytics (Meta Pixel)](#analytics-meta-pixel)
+10. [Troubleshooting Guide](#troubleshooting-guide)
 
 ---
 
@@ -88,11 +89,11 @@ object-src 'none';
 | Directive | Value | Why |
 |-----------|-------|-----|
 | `default-src` | `'self'` | Only load resources from our domain by default |
-| `script-src` | `'self' https://kit.fontawesome.com https://app.kit.com https://analytics.lumicello.com` | Allow our scripts (external files only), FontAwesome, Kit.com newsletter, and Umami analytics |
+| `script-src` | `'self' https://kit.fontawesome.com https://app.kit.com https://analytics.lumicello.com https://connect.facebook.net` | Allow our scripts (external files only), FontAwesome, Kit.com newsletter, Umami analytics, and Meta Pixel |
 | `style-src` | `'self' 'unsafe-inline' https://fonts.googleapis.com` | Allow our CSS, inline styles (used in pages), Google Fonts |
 | `font-src` | `'self' https://fonts.gstatic.com https://ka-f.fontawesome.com` | Google Fonts and FontAwesome icon fonts |
 | `img-src` | `'self' data: https:` | Our images, data URIs (SVGs), any HTTPS images |
-| `connect-src` | `'self' https://app.kit.com https://formspree.io https://ka-f.fontawesome.com https://analytics.lumicello.com` | AJAX/fetch to newsletter, contact form, and analytics services |
+| `connect-src` | `'self' https://app.kit.com https://formspree.io https://ka-f.fontawesome.com https://analytics.lumicello.com https://www.facebook.com` | AJAX/fetch to newsletter, contact form, and analytics services |
 | `form-action` | `'self' https://app.kit.com https://formspree.io` | Forms can only submit to these destinations |
 | `frame-ancestors` | `'none'` | Prevent site from being embedded in iframes (clickjacking protection) |
 | `base-uri` | `'self'` | Prevent base tag injection |
@@ -104,6 +105,14 @@ object-src 'none';
 - Required because pages use inline `<style>` blocks and style attributes
 - Scripts no longer use `'unsafe-inline'` - all JavaScript is in external files (`main.js`, `components.js`)
 - **Future improvement:** Extract inline styles to CSS files, use nonces or hashes
+
+### Meta Pixel
+
+The site loads Meta Pixel from a local bootstrap file (`js/meta-pixel.js`) so the Pixel ID stays explicit in-repo while the CSP remains narrow.
+
+- `script-src` allows `https://connect.facebook.net` for the Meta loader
+- `connect-src` allows `https://www.facebook.com` for browser-side event delivery
+- `img-src https:` already covers the noscript tracking beacon
 
 ### Adding New External Resources
 
