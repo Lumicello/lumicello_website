@@ -583,6 +583,14 @@ a {
     animation: fade-up var(--duration-slower) var(--ease-out) var(--stagger-4) both;
 }
 
+.hero-supporting-note {
+    margin-top: var(--space-md);
+    max-width: 34rem;
+    font-size: var(--text-small);
+    color: var(--color-text-secondary);
+    animation: fade-up var(--duration-slower) var(--ease-out) var(--stagger-5) both;
+}
+
 /* Hero Visual - Constellation */
 .hero-visual {
     position: relative;
