@@ -1132,7 +1132,20 @@
     gap: var(--space-sm);
     font-size: var(--text-body);
     color: var(--color-text-secondary);
+    text-decoration: none;
     cursor: pointer;
+    background: var(--color-bg-warm);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-pill);
+    padding: var(--space-sm) var(--space-md);
+    transition: all var(--duration-fast) var(--ease-out);
+}
+
+.addon-option:hover {
+    color: var(--color-primary);
+    border-color: rgba(74, 93, 75, 0.25);
+    background: rgba(74, 93, 75, 0.06);
+    transform: translateY(-1px);
 }
 
 .addon-option input[type="checkbox"] {
