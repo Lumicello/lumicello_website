@@ -79,6 +79,7 @@ font-src 'self' https://fonts.gstatic.com https://ka-f.fontawesome.com;
 img-src 'self' data: https:;
 connect-src 'self' https://app.kit.com https://formspree.io https://ka-f.fontawesome.com https://analytics.lumicello.com;
 form-action 'self' https://app.kit.com https://formspree.io;
+frame-src 'self' https://www.facebook.com;
 frame-ancestors 'none';
 base-uri 'self';
 object-src 'none';
@@ -94,7 +95,8 @@ object-src 'none';
 | `font-src` | `'self' https://fonts.gstatic.com https://ka-f.fontawesome.com` | Google Fonts and FontAwesome icon fonts |
 | `img-src` | `'self' data: https:` | Our images, data URIs (SVGs), any HTTPS images |
 | `connect-src` | `'self' https://app.kit.com https://formspree.io https://ka-f.fontawesome.com https://analytics.lumicello.com https://www.facebook.com` | AJAX/fetch to newsletter, contact form, and analytics services |
-| `form-action` | `'self' https://app.kit.com https://formspree.io` | Forms can only submit to these destinations |
+| `form-action` | `'self' https://app.kit.com https://formspree.io https://www.facebook.com` | Forms can only submit to these destinations, including Meta Pixel fallback posts |
+| `frame-src` | `'self' https://www.facebook.com` | Allow Meta Pixel iframe-based fallback transport |
 | `frame-ancestors` | `'none'` | Prevent site from being embedded in iframes (clickjacking protection) |
 | `base-uri` | `'self'` | Prevent base tag injection |
 | `object-src` | `'none'` | Block Flash/plugins |
@@ -112,6 +114,8 @@ The site loads Meta Pixel from a local bootstrap file (`js/meta-pixel.js`) so th
 
 - `script-src` allows `https://connect.facebook.net` for the Meta loader
 - `connect-src` allows `https://www.facebook.com` for browser-side event delivery
+- `form-action` allows `https://www.facebook.com` for Meta's form-post fallback transport
+- `frame-src` allows `https://www.facebook.com` for Meta's iframe fallback transport
 - `img-src https:` already covers the noscript tracking beacon
 
 ### Adding New External Resources
